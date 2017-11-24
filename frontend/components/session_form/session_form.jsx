@@ -31,7 +31,7 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
-    if (!this.props.errors) return [];
+    if (this.props.errors.length === 0) return null;
     return (
       <ul>
         {
@@ -44,26 +44,33 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    const title = this.props.formType === 'signup' ? 'Create a new account' : 'Log In';
     return (
-      <div className="modal-container">
-        <h2>{this.props.formType}</h2>
+      <div className="session-form-container">
+        <h2>{title}</h2>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
-          <label>Username:
-            <input
-              type="text"
-              value={this.state.username}
-              onChange={this.update('username')}
-            />
-          </label>
-          <label>Password:
-            <input
-              type="password"
-              value={this.state.password}
-              onChange={this.update('password')}
-            />
-          </label>
-          <input type="submit" value="Submit" />
+          <div className="input-container">
+            <label>Username:
+              <input
+                type="text"
+                value={this.state.username}
+                onChange={this.update('username')}
+                />
+            </label>
+          </div>
+          <div className="input-container">
+            <label>Password:
+              <input
+                type="password"
+                value={this.state.password}
+                onChange={this.update('password')}
+                />
+            </label>
+          </div>
+          <div className="input-container">
+            <button type="submit" className="submit-btn">Submit</button>
+          </div>
         </form>
       </div>
     );

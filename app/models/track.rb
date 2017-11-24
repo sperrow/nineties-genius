@@ -14,4 +14,6 @@
 
 class Track < ApplicationRecord
   validates :title, :author_id, :lyrics, :artist_id, :album_id, presence: true
+
+  belongs_to :album
 end
