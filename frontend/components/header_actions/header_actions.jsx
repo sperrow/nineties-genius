@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import SessionModal from './session_modal';
 
 const loggedOutActions = () => (
   <div className="header-actions">
-    <Link to="/signup">SIGN UP</Link>
-    <Link to="/login">SIGN IN</Link>
+    <SessionModal formType="signup" />
+    <SessionModal formType="login" />
   </div>
 );
 

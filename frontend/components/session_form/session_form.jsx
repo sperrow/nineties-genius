@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="modal-container">
         <h2>{this.props.formType}</h2>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>

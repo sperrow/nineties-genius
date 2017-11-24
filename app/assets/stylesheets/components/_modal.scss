@@ -1,0 +1,22 @@
+.modal {
+  outline: none;
+  display: flex;
+  justify-content: center;
+
+  .modal-container {
+    text-align: center;
+    height: 500px;
+    max-width: 450px;
+    padding: 40px;
+    margin-top: 60px;
+    background-color: $light-gray;
+  }
+
+  .close-btn {
+    cursor: pointer;
+    position: absolute;
+    top: 60px;
+    right: 60px;
+    color: $light-gray;
+  }
+}
