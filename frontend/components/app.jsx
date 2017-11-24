@@ -7,15 +7,12 @@ import {
   HashRouter
 } from 'react-router-dom';
 
-import GreetingContainer from './greeting/greeting_container';
+import SiteNav from './nav/site_nav';
 import SessionFormContainer from './session_form/session_form_container';
 
 const App = () => (
   <div>
-    <header>
-      <h1>90s Genius</h1>
-      <GreetingContainer />
-    </header>
+    <SiteNav />
     <Route path="/login" component={SessionFormContainer} />
     <Route path="/signup" component={SessionFormContainer} />
   </div>

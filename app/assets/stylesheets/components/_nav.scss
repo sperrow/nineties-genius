@@ -1,0 +1,77 @@
+.site-header {
+  position: relative;
+  top: 0;
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .top-nav {
+    background-color: $yellow;
+    height: 41px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo {
+    color: $yellow;
+    text-shadow: -2px 3px black;
+    letter-spacing: 6px;
+    font-weight: 700;
+    font-size: 24px;
+  }
+
+  .header-actions {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 700;
+    height: 100%;
+
+    a {
+      height: 100%;
+      box-sizing: border-box;
+      padding: 10px;
+      line-height: 1.6;
+    }
+
+    a:hover {
+      border-bottom: 6px solid #ff1464;
+    }
+  }
+
+  .secondary-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    color: white;
+    min-height: 38px;
+    font-size: 14px;
+
+    a {
+      color: white;
+    }
+
+    .text-link:hover {
+      color: $yellow;
+    }
+
+    li, .divider {
+      margin-right: 20px;
+    }
+
+    .links {
+      display: flex;
+    }
+
+    .fa {
+      font-size: 18px;
+    }
+  }
+}
