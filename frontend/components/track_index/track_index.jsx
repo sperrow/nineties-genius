@@ -8,7 +8,7 @@ class TrackIndex extends React.Component {
 
   render() {
     return (
-      <section>
+      <section className="track-list">
         {
           this.props.tracks.map(track => (
             <TrackIndexItem track={track} key={track.id} />

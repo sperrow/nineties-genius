@@ -18,7 +18,6 @@ class TrackIndexItem extends React.Component {
       <div className="track-item" onClick={this.handleClick}>
         <span>Title: {track.title}</span>
         <span>Artist: {track.artist}</span>
-        <span>Album: {track.album}</span>
       </div>
     );
   }

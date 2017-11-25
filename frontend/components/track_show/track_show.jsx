@@ -12,7 +12,7 @@ class TrackShow extends React.Component {
   render() {
     const track = this.props.track;
     return (
-      <section>
+      <section className="track-show">
         <div>
           <h2>{track.title}</h2>
           <p>{track.artist}</p>
