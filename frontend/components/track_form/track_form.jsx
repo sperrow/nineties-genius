@@ -1,21 +1,17 @@
 import React from 'react';
 import { withRouter } from 'react-router';
 
-class SessionForm extends React.Component {
+class TrackForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: '',
-      password: ''
+      title: '',
+      lyrics: '',
+      artist_id: '',
+      album_id: ''
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.loggedIn) {
-      this.props.history.push('/');
-    }
   }
 
   update(field) {
@@ -26,8 +22,8 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = this.state;
-    this.props.processForm({user});
+    const track = this.state;
+    this.props.processForm({track});
   }
 
   renderErrors() {
@@ -44,28 +40,45 @@ class SessionForm extends React.Component {
   }
 
   render() {
-    const title = this.props.formType === 'signup' ? 'Create a new account' : 'Log In';
+    const title = this.props.formType === 'create' ? 'Add track' : 'Edit track';
     return (
-      <div className="session-form-container">
+      <div className="track-form-container">
         <h2>{title}</h2>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
           <div className="input-container">
-            <label>Username:
+            <label>Title:
               <input
                 type="text"
-                value={this.state.username}
-                onChange={this.update('username')}
+                value={this.state.title}
+                onChange={this.update('title')}
               />
             </label>
           </div>
           <div className="input-container">
-            <label>Password:
-              <input
-                type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
+            <label>Lyrics:
+              <textarea
+                value={this.state.lyrics}
+                onChange={this.update('lyrics')}
               />
+            </label>
+          </div>
+          <div className="input-container">
+            <label>Artist:
+              <input
+                type="text"
+                value={this.state.artist_id}
+                onChange={this.update('artist_id')}
+              />
+            </label>
+          </div>
+          <div className="input-container">
+            <label>Album:
+              <input
+                type="text"
+                value={this.state.album_id}
+                onChange={this.update('album_id')}
+                />
             </label>
           </div>
           <div className="input-container">
@@ -77,4 +90,4 @@ class SessionForm extends React.Component {
   }
 }
 
-export default withRouter(SessionForm);
+export default withRouter(TrackForm);
