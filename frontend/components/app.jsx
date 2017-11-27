@@ -17,11 +17,14 @@ import TrackShowContainer from './track_show/track_show_container';
 const App = () => (
   <div>
     <SiteNav />
-    <AuthRoute path="/login" component={() => <SessionFormContainer formType="login" />} />
-    <AuthRoute path="/signup" component={() => <SessionFormContainer formType="signup" />} />
-    <ProtectedRoute path="/tracks/new" component={() => <TrackFormContainer formType="create" />} />
-    <Route exact path="/" component={TrackIndexContainer} />
-    <Route path="/tracks/:trackId" component={TrackShowContainer} />
+    <Switch>
+      <AuthRoute path="/login" component={() => <SessionFormContainer formType="login" />} />
+      <AuthRoute path="/signup" component={() => <SessionFormContainer formType="signup" />} />
+      <Route exact path="/" component={TrackIndexContainer} />
+      <ProtectedRoute path="/tracks/new" component={TrackFormContainer} />
+      <ProtectedRoute path="/tracks/:trackId/edit" component={TrackFormContainer} />
+      <Route path="/tracks/:trackId" component={TrackShowContainer} />
+    </Switch>
   </div>
 );
 

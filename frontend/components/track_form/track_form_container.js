@@ -1,19 +1,23 @@
 import { connect } from 'react-redux';
-import { createTrack, updateTrack } from '../../utils/track_api_util';
+import { fetchTrack, createTrack, updateTrack } from '../../actions/track_actions';
 import TrackForm from './track_form';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const track = ownProps.match.params.trackId ? state.entities.tracks[ownProps.match.params.trackId] : null;
   return {
-    loggedIn: Boolean(state.session.currentUser),
-    errors: state.errors.session
+    userId: state.session.currentUser.id,
+    errors: state.errors.track,
+    track
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const processForm = ownProps.formType === 'create' ? createTrack : updateTrack;
+  const formType = ownProps.match.params.trackId ? 'update' : 'create';
+  const processForm = formType === 'update' ? updateTrack : createTrack;
 
   return {
-    processForm: track => dispatch(processForm(track))
+    processForm: track => dispatch(processForm(track)),
+    fetchTrack: id => dispatch(fetchTrack(id))
   };
 };
 

@@ -8,10 +8,30 @@ class TrackForm extends React.Component {
       title: '',
       lyrics: '',
       artist_id: '',
-      album_id: ''
+      album_id: '',
+      author_id: props.userId
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidMount() {
+    if (this.props.match.params.trackId) {
+      this.props.fetchTrack(this.props.match.params.trackId);
+    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    if (newProps.track) {
+      const { id, title, lyrics, artist_id, album_id } = newProps.track;
+      this.setState({
+        id,
+        title,
+        lyrics,
+        artist_id,
+        album_id
+      });
+    }
   }
 
   update(field) {
@@ -24,10 +44,11 @@ class TrackForm extends React.Component {
     e.preventDefault();
     const track = this.state;
     this.props.processForm({track});
+    this.props.history.push('/');
   }
 
   renderErrors() {
-    if (this.props.errors.length === 0) return null;
+    if (!this.props.errors) return null;
     return (
       <ul>
         {
@@ -40,52 +61,50 @@ class TrackForm extends React.Component {
   }
 
   render() {
-    const title = this.props.formType === 'create' ? 'Add track' : 'Edit track';
+    const title = this.props.formType === 'create' ? 'Add Song' : 'Edit Song';
     return (
-      <div className="track-form-container">
+      <section className="track-form-container">
         <h2>{title}</h2>
         {this.renderErrors()}
         <form onSubmit={this.handleSubmit}>
           <div className="input-container">
-            <label>Title:
-              <input
-                type="text"
-                value={this.state.title}
-                onChange={this.update('title')}
+            <label>BY * (id #)</label>
+            <input
+              type="text"
+              value={this.state.artist_id}
+              onChange={this.update('artist_id')}
               />
-            </label>
           </div>
           <div className="input-container">
-            <label>Lyrics:
-              <textarea
-                value={this.state.lyrics}
-                onChange={this.update('lyrics')}
-              />
-            </label>
+            <label>TITLE *</label>
+            <input
+              type="text"
+              value={this.state.title}
+              onChange={this.update('title')}
+            />
           </div>
           <div className="input-container">
-            <label>Artist:
-              <input
-                type="text"
-                value={this.state.artist_id}
-                onChange={this.update('artist_id')}
-              />
-            </label>
+            <label>LYRICS *</label>
+            <textarea
+              cols="40"
+              rows="20"
+              value={this.state.lyrics}
+              onChange={this.update('lyrics')}
+            />
           </div>
           <div className="input-container">
-            <label>Album:
-              <input
-                type="text"
-                value={this.state.album_id}
-                onChange={this.update('album_id')}
-                />
-            </label>
+            <label>ALBUM (id #)</label>
+            <input
+              type="text"
+              value={this.state.album_id}
+              onChange={this.update('album_id')}
+            />
           </div>
           <div className="input-container">
             <button type="submit" className="submit-btn">Submit</button>
           </div>
         </form>
-      </div>
+      </section>
     );
   }
 }

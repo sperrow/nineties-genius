@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import HeaderActionsContainer from '../header_actions/header_actions_container';
 
 const SiteNav = () => (
@@ -11,12 +12,17 @@ const SiteNav = () => (
         <ul className="links">
           <li><a className="text-link" href="#">FEATURED STORIES</a></li>
           <li><a className="text-link" href="#">TOP SONGS</a></li>
-          <li><a className="text-link" href="#">VIDEOS</a></li>
-          <li><a className="text-link" href="#">COMMUNITY</a></li>
+          <li>
+            <a
+            className="text-link"
+            href="https://www.youtube.com/playlist?list=PLrbsIj7db4PLu4ojmlGtx91FAygLTLs06"
+            target="_blank"
+            >VIDEOS</a>
+          </li>
         </ul>
         <span className="divider">|</span>
         <ul className="links">
-          <li><a className="text-link" href="#">SHOP</a></li>
+          <li><Link to="/tracks/new">ADD A SONG</Link></li>
         </ul>
         <span className="divider">|</span>
         <ul className="links">

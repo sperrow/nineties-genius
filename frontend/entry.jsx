@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom';
 import configureStore from './store/store';
 import Root from './components/root';
 
-// import { fetchTracks, createTrack } from './utils/track_api_util';
 import { fetchTrack, fetchTracks } from './actions/track_actions';
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -14,7 +14,7 @@ export const receiveTracks = tracks => ({
   tracks
 });
 
-export const receiveErrors = errors => ({
+export const receiveTrackErrors = errors => ({
   type: RECEIVE_TRACK_ERRORS,
   errors
 });
@@ -22,13 +22,27 @@ export const receiveErrors = errors => ({
 export const fetchTrack = id => dispatch => (
   APIUtil.fetchTrack(id).then(track => (
     dispatch(receiveTrack(track))
-  ), err => (
-    dispatch(receiveErrors(err.responseJSON))
   ))
 );
 
 export const fetchTracks = () => dispatch => (
   APIUtil.fetchTracks().then(tracks => (
     dispatch(receiveTracks(tracks))
+  ))
+);
+
+export const createTrack = track => dispatch => (
+  APIUtil.createTrack(track).then(createdTrack => (
+    dispatch(receiveTrack(createdTrack))
+  ), err => (
+    dispatch(receiveTrackErrors(err.responseJSON))
+  ))
+);
+
+export const updateTrack = track => dispatch => (
+  APIUtil.updateTrack(track).then(updatedTrack => (
+    dispatch(receiveTrack(updatedTrack))
+  ), err => (
+    dispatch(receiveTrackErrors(err.responseJSON))
   ))
 );
