@@ -18,16 +18,32 @@ class TrackShow extends React.Component {
 
       details = (
         <section className="track-show">
-          <div>
-            <h2>{track.title}</h2>
-            <p>{track.artist}</p>
-            <p>{track.album}</p>
-            <p>{track.track_number}</p>
+          <div className="row track-header" style={
+            {backgroundImage: `linear-gradient(rgba(0,0,0,0.8), rgba(0,0,0,0.8)), url(${track.album_url})`}
+          }>
+            <div className="col-3">
+              <img className="track-art" src={track.album_url} />
+            </div>
+            <div className="col-4">
+              <div className="track-info">
+                <h1 className="track-title">{track.title}</h1>
+                <h2 className="track-artist"><Link to="#">{track.artist}</Link></h2>
+                <p className="track-album label">Album <Link to="#">{track.album}</Link></p>
+              </div>
+            </div>
           </div>
-          <div>
-            <p>{track.lyrics}</p>
+          <div className="row">
+            <div className="col-7">
+              <div className="lyrics">
+                {
+                  track.lyrics.split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))
+                }
+              </div>
+              <Link to={editUrl}>Edit Song</Link>
+            </div>
           </div>
-          <Link to={editUrl}>Edit Song</Link>
         </section>
       );
     }

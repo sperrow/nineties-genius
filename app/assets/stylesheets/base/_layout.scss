@@ -1,6 +1,21 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  left: 0;
+  top: 0;
+  font-size: 100%;
+}
+
 body {
   font-family: 'PT Sans', sans-serif;
   background-color: $light-gray;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
 }
 
 h1 {
@@ -15,12 +30,20 @@ h3 {
   font-size: 16px;
 }
 
+a {
+  color: $link;
+}
+
 button {
   border-radius: 0;
 }
 
 label {
   display: block;
+}
+
+.label {
+  color: $label;
 }
 
 .submit-btn {
