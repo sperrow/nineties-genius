@@ -24,7 +24,7 @@ class TrackShow extends React.Component {
             <div className="col-3">
               <img className="track-art" src={track.album_url} />
             </div>
-            <div className="col-4">
+            <div className="col-5">
               <div className="track-info">
                 <h1 className="track-title">{track.title}</h1>
                 <h2 className="track-artist"><Link to="#">{track.artist}</Link></h2>

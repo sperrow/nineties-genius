@@ -5,7 +5,7 @@ import HeaderActionsContainer from '../header_actions/header_actions_container';
 const SiteNav = () => (
   <header className="site-header">
     <nav className="top-nav">
-      <div className="logo">90s GENIUS</div>
+      <div className="logo"><Link to="/">90s GENIUS</Link></div>
       <HeaderActionsContainer />
     </nav>
     <nav className="secondary-nav">
