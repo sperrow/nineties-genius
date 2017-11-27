@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { dateFormatter } from '../../utils/helpers';
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -15,6 +16,7 @@ class TrackShow extends React.Component {
     if (this.props.track) {
       const track = this.props.track;
       const editUrl = `/tracks/${track.id}/edit`;
+      let date = dateFormatter(track.album_release_date);
 
       details = (
         <section className="track-show">
@@ -32,16 +34,38 @@ class TrackShow extends React.Component {
               </div>
             </div>
           </div>
-          <div className="row">
-            <div className="col-7">
-              <div className="lyrics">
-                {
-                  track.lyrics.split('\n').map((line, i) => (
-                    <p key={i}>{line}</p>
-                  ))
-                }
+          <div className="container">
+            <div className="row">
+              <div className="col-7">
+                <div className="lyrics">
+                  {
+                    track.lyrics.split('\n').map((line, i) => (
+                      <p key={i}><span className="lyric-line">{line}</span></p>
+                    ))
+                  }
+                </div>
+                <Link to={editUrl}>Edit Song</Link>
               </div>
-              <Link to={editUrl}>Edit Song</Link>
+              <div className="col-5">
+                <div className="track-info-secondary">
+                  <div className="row">
+                    <div className="col-4">
+                      <p className="label">Release Date</p>
+                    </div>
+                    <div className="col-8">
+                      <p className="info-item">{date}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-4">
+                      <p className="label">Genre</p>
+                    </div>
+                    <div className="col-8">
+                      <p className="info-item">Rock</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

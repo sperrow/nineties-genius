@@ -1,6 +1,4 @@
 .track-show {
-  background-color: white;
-
   a {
     text-decoration: none;
   }
@@ -39,7 +37,24 @@
     line-height: 1.45;
   }
 
-  .lyrics {
+  .container {
     background-color: white;
+    padding-top: 10px;
+  }
+
+  .lyric-line {
+    font-size: 18px;
+    line-height: 1.8;
+    padding: 4px 0;
+    margin-bottom: 4px;
+
+    &:hover {
+      background-color: $yellow;
+    }
+  }
+
+  .label span {
+    color: black;
+    margin-left: 10px;
   }
 }
