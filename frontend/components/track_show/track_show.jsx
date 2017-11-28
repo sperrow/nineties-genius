@@ -61,7 +61,15 @@ class TrackShow extends React.Component {
                       <p className="label">Genre</p>
                     </div>
                     <div className="col-8">
-                      <p className="info-item">Rock</p>
+                      <p className="info-item genre">{track.genre}</p>
+                    </div>
+                  </div>
+                  <div className="row">
+                    <div className="col-4">
+                      <p className="label">Added By</p>
+                    </div>
+                    <div className="col-8">
+                      <p className="info-item">@{track.author}</p>
                     </div>
                   </div>
                 </div>

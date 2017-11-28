@@ -4,4 +4,21 @@
   padding: 40px;
   color: white;
   background-color: black;
+  position: relative;
+
+  .required {
+    position: absolute;
+    top: 40px;
+    right: 40px;
+  }
+
+  .hr {
+    border-color: $hr;
+  }
+
+  label {
+    color: $label;
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
 }

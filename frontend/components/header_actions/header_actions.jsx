@@ -8,7 +8,7 @@ const loggedOutActions = () => (
   </div>
 );
 
-const loggedInActions = (currentUser, logout) => (
+const loggedInActions = logout => (
   <ul className="header-actions">
     <li>
       <button className="logout-btn" onClick={logout}>SIGN OUT</button>
@@ -17,7 +17,7 @@ const loggedInActions = (currentUser, logout) => (
 );
 
 const HeaderActions = ({ currentUser, logout }) => (
-  currentUser ? loggedInActions(currentUser, logout) : loggedOutActions()
+  currentUser ? loggedInActions(logout) : loggedOutActions()
 );
 
 export default HeaderActions;

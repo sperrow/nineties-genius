@@ -9,6 +9,7 @@ class TrackForm extends React.Component {
       lyrics: '',
       artist_id: '',
       album_id: '',
+      genre: 'pop',
       author_id: props.userId
     };
 
@@ -23,28 +24,51 @@ class TrackForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.track) {
-      const { id, title, lyrics, artist_id, album_id } = newProps.track;
+      const { id, title, lyrics, genre, artist_id, album_id } = newProps.track;
       this.setState({
         id,
         title,
         lyrics,
+        genre,
         artist_id,
         album_id
       });
     }
+
+    if (this.props.location.pathname !== newProps.location.pathname) {
+      this.setState({
+        id: '',
+        title: '',
+        lyrics: '',
+        genre: 'pop',
+        artist_id: '',
+        album_id: ''
+      });
+    }
   }
 
+  // update(field) {
+  //   return e => this.setState({
+  //     [field]: e.target.value
+  //   });
+  // }
+
   update(field) {
-    return e => this.setState({
-      [field]: e.target.value
-    });
+    return e => {
+      console.log(e.target.value);
+      this.setState({
+        [field]: e.target.value
+      });
+    };
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const track = this.state;
-    this.props.processForm({track});
-    this.props.history.push('/');
+    this.props.processForm({track})
+      .then(data => {
+        this.props.history.push(`/tracks/${data.track.id}`);
+      });
   }
 
   renderErrors() {
@@ -61,11 +85,13 @@ class TrackForm extends React.Component {
   }
 
   render() {
-    const title = this.props.formType === 'create' ? 'Add Song' : 'Edit Song';
+    const title = this.props.match.params.trackId ? 'Edit Song' : 'Add Song';
     return (
       <section className="track-form-container">
         <h2>{title}</h2>
+        <p className="required">* required</p>
         {this.renderErrors()}
+        <hr className="hr" />
         <form onSubmit={this.handleSubmit}>
           <div className="input-container">
             <label>BY * (id #)</label>
@@ -82,6 +108,17 @@ class TrackForm extends React.Component {
               value={this.state.title}
               onChange={this.update('title')}
             />
+          </div>
+          <div className="input-container">
+            <label>GENRE *</label>
+            <select value={this.state.genre} onChange={this.update('genre')}>
+              <option value="rap">Rap</option>
+              <option value="pop">Pop</option>
+              <option value="r&b">R&B</option>
+              <option value="rock">Rock</option>
+              <option value="country">Country</option>
+              <option value="non-music">Non-Music</option>
+            </select>
           </div>
           <div className="input-container">
             <label>LYRICS *</label>

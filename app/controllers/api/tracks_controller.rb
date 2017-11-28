@@ -18,8 +18,6 @@ class Api::TracksController < ApplicationController
 
   def update
     @track = Track.find(params[:id])
-    p 'HAYYYY'
-    p @track
     if @track.update_attributes(track_params)
       render 'api/tracks/show'
     else
@@ -28,12 +26,17 @@ class Api::TracksController < ApplicationController
   end
 
   def destroy
-
+    @track = Track.find(params[:id])
+    if @track.destroy
+      render 'api/tracks/show'
+    else
+      render json: @track.errors.full_messages, status: 422
+    end
   end
 
   private
 
   def track_params
-    params.require(:track).permit(:title, :author_id, :lyrics, :artist_id, :album_id)
+    params.require(:track).permit(:title, :author_id, :genre, :lyrics, :artist_id, :album_id)
   end
 end
