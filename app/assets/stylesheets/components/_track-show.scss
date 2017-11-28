@@ -42,11 +42,14 @@
     padding-top: 10px;
   }
 
-  .lyric-line {
+  .lyrics {
     font-size: 18px;
     line-height: 1.8;
-    padding: 4px 0;
-    margin-bottom: 4px;
+  }
+
+  .annotation-line {
+    background-color: $gray;
+    color: black;
 
     &:hover {
       background-color: $yellow;

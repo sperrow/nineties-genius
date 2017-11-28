@@ -2,6 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../utils/helpers';
 
+import Lyrics from './lyrics';
+
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
@@ -37,13 +39,7 @@ class TrackShow extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-7">
-                <div className="lyrics">
-                  {
-                    track.lyrics.split('\n').map((line, i) => (
-                      <p key={i}><span className="lyric-line">{line}</span></p>
-                    ))
-                  }
-                </div>
+                <Lyrics lyrics={track.lyrics} fragment="So leave a message\nAnd I'll call you back" />
                 <Link to={editUrl}>Edit Song</Link>
               </div>
               <div className="col-5">

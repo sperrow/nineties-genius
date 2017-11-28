@@ -8,3 +8,25 @@ export const dateFormatter = (str) => {
 
   return `${months[month]} ${day}, ${year}`;
 };
+
+export const convertLyrics = (lyrics, fragment) => {
+  lyrics = `<div class="lyrics">${lyrics}</div>`;
+  const addNewLines = str => {
+    return str.replace(/(?:\r\n|\r|\n)/g, '\\n');
+  };
+
+  const addRef = (l, f) => {
+    let i = l.indexOf(f);
+    if (i > -1) {
+      let ref = `<a ref-id="3">${f}</a>`;
+      return l.substring(0, i) + ref + l.substring(i + f.length);
+    }
+    return l;
+  };
+
+  const addBreaks = str => {
+    return str.replace(/\\n/g, '<br />');
+  };
+
+  return addBreaks(addRef(addNewLines(lyrics), fragment));
+};
