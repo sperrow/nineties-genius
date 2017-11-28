@@ -28,5 +28,5 @@ export const convertLyrics = (lyrics, fragment) => {
     return str.replace(/\\n/g, '<br />');
   };
 
-  return addBreaks(addRef(addNewLines(lyrics), fragment));
+  return addBreaks(addRef(addNewLines(lyrics), addNewLines(fragment)));
 };

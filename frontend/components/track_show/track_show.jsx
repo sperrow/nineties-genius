@@ -19,6 +19,11 @@ class TrackShow extends React.Component {
       const track = this.props.track;
       const editUrl = `/tracks/${track.id}/edit`;
       let date = dateFormatter(track.album_release_date);
+      let lyrics = null;
+
+      if (track.referents) {
+        lyrics = <Lyrics lyrics={track.lyrics} fragment={track.referents[0].fragment} />;
+      }
 
       details = (
         <section className="track-show">
@@ -39,7 +44,9 @@ class TrackShow extends React.Component {
           <div className="container">
             <div className="row">
               <div className="col-7">
-                <Lyrics lyrics={track.lyrics} fragment="So leave a message\nAnd I'll call you back" />
+                {
+                  lyrics
+                }
                 <Link to={editUrl}>Edit Song</Link>
               </div>
               <div className="col-5">

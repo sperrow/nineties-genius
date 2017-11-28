@@ -34,7 +34,7 @@ const processingInstructions = [
     }
   },
   {
-    // Default
+    // Default processing
     shouldProcessNode: function (node) {
       return true;
     },

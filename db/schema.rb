@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171127215824) do
+ActiveRecord::Schema.define(version: 20171128232028) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,15 @@ ActiveRecord::Schema.define(version: 20171127215824) do
     t.index ["title"], name: "index_albums_on_title"
   end
 
+  create_table "annotations", force: :cascade do |t|
+    t.integer "author_id", null: false
+    t.integer "referent_id", null: false
+    t.text "body", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["referent_id"], name: "index_annotations_on_referent_id"
+  end
+
   create_table "artists", force: :cascade do |t|
     t.string "name", null: false
     t.integer "author_id", null: false
@@ -34,6 +43,14 @@ ActiveRecord::Schema.define(version: 20171127215824) do
     t.datetime "updated_at", null: false
     t.string "img_url"
     t.index ["name"], name: "index_artists_on_name", unique: true
+  end
+
+  create_table "referents", force: :cascade do |t|
+    t.integer "track_id", null: false
+    t.text "fragment", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["track_id"], name: "index_referents_on_track_id"
   end
 
   create_table "tracks", force: :cascade do |t|
