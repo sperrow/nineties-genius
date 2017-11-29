@@ -26,4 +26,4 @@ Track.create(title: 'Just A Girl', author_id: 1, artist_id: 1, album_id: 1, trac
 
 Referent.create(track_id: 1, fragment: "So leave a message\nAnd I'll call you back")
 
-Annotation.create(author_id: 1, referent_id: 1, body: "wow wow wow")
+Annotation.create(author_id: 1, referent_id: 1, body: "She is too busy trapped in what the Man thinks is a relationship. She is working out her problems and deciding what to do.\n\nThis could be a specific message for the Man, or it could be a generic excuse.")

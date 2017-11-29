@@ -56,6 +56,29 @@
     }
   }
 
+  .annotation-container {
+    position: relative;
+    padding: 1rem 0 0 1rem;
+    line-height: 1.5;
+    white-space: pre-line;
+
+    &:before {
+      background-color: $annotation;
+      bottom: 0;
+      content: '';
+      display: block;
+      left: 0;
+      position: absolute;
+      top: 1rem;
+      width: 4px;
+    }
+  }
+
+  .annotation-heading {
+    font-size: 14px;
+    margin-bottom: 20px;
+  }
+
   .genre {
     text-transform: capitalize;
   }
