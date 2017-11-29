@@ -1,0 +1,29 @@
+.footer {
+  background-color: black;
+  padding: 42px;
+  text-align: center;
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  li {
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+
+  a {
+    color: yellow;
+    text-decoration: none;
+
+    &:hover {
+      color: $link;
+    }
+  }
+
+  .copyright {
+    color: $legal;
+  }
+}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../utils/helpers';
 
 const TrackSecondary = ({ track }) => (
@@ -21,10 +22,15 @@ const TrackSecondary = ({ track }) => (
     </div>
     <div className="row">
       <div className="col-4">
-        <p className="label">Added By</p>
+        <p className="label">Last Edit By</p>
       </div>
       <div className="col-8">
         <p className="info-item">@{track.author}</p>
+      </div>
+    </div>
+    <div className="row">
+      <div className="col-12">
+        <p className="info-item"><Link to={`/tracks/${track.id}/edit`}>Edit Song</Link></p>
       </div>
     </div>
   </div>

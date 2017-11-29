@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 import TrackHeader from './track_header';
 import TrackSecondary from './track_secondary';
@@ -47,7 +46,6 @@ class TrackShow extends React.Component {
     let details = null;
     if (this.props.track) {
       const track = this.props.track;
-      const editUrl = `/tracks/${track.id}/edit`;
       let lyrics = null;
 
       if (track.referents) {
@@ -66,7 +64,6 @@ class TrackShow extends React.Component {
             <div className="row">
               <div className="col-7">
                 {lyrics}
-                <Link to={editUrl}>Edit Song</Link>
               </div>
               <div className="col-5">
                 {
