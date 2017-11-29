@@ -14,11 +14,24 @@ class TrackShow extends React.Component {
     };
 
     this.handleRefClick = this.handleRefClick.bind(this);
-    this.handleAnnotationUnmount = this.handleAnnotationUnmount.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId);
+  }
+
+  componentDidUpdate() {
+    const closeAnnotation = e => {
+      const a = document.getElementsByClassName('annotation-container')[0];
+      if (a && !a.contains(e.target)) {
+        this.setState({referent: null});
+        document.removeEventListener('click', closeAnnotation);
+      }
+    };
+
+    if (this.state.referent) {
+      document.addEventListener('click', closeAnnotation);
+    }
   }
 
   handleRefClick(refId) {
@@ -31,12 +44,6 @@ class TrackShow extends React.Component {
         referent
       });
     };
-  }
-
-  handleAnnotationUnmount() {
-    this.setState({
-      referent: null
-    });
   }
 
   render() {
@@ -67,10 +74,8 @@ class TrackShow extends React.Component {
               <div className="col-5">
                 {
                   this.state.referent ?
-                  <Annotation
-                    referent={this.state.referent}
-                    unmountMe={this.handleAnnotationUnmount}
-                  /> : <TrackSecondary track={track} />
+                  <Annotation referent={this.state.referent} /> :
+                  <TrackSecondary track={track} />
                 }
               </div>
             </div>

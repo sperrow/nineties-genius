@@ -22,7 +22,7 @@ const Lyrics = ({ lyrics, fragment, handleClick }) => {
           {
             href: '#',
             key: index,
-            className: 'annotation-line',
+            className: `annotation-line ref-${refId}`,
             onClick: handleClick(refId)
           },
           children

@@ -74,9 +74,33 @@
     }
   }
 
+  .annotation-arrow {
+    width: 40px;
+    height: 40px;
+    background-color: $annotation;
+    clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    position: absolute;
+    left: -36px;
+    top: 70px;
+
+    &:after {
+      content: '';
+      display: block;
+      width: 30px;
+      height: 30px;
+      background-color: white;
+      clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+      position: absolute;
+      left: 10px;
+      top: 5px;
+    }
+  }
+
   .annotation-heading {
     font-size: 14px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
   }
 
   .genre {
