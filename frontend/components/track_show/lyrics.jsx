@@ -7,7 +7,7 @@ const htmlToReactParser = new HtmlToReact.Parser();
 const isValidNode = () => true;
 const processNodeDefinitions = new HtmlToReact.ProcessNodeDefinitions(React);
 
-const Lyrics = ({ lyrics, fragment, handleClick }) => {
+const Lyrics = ({ lyrics, referents, handleClick }) => {
   // Configuration for parser
   const processingInstructions = [
     // Custom <a> processing
@@ -38,7 +38,7 @@ const Lyrics = ({ lyrics, fragment, handleClick }) => {
     }
   ];
 
-  let htmlStr = convertLyrics(lyrics, fragment);
+  let htmlStr = convertLyrics(lyrics, referents);
 
   return htmlToReactParser.parseWithInstructions(htmlStr, isValidNode, processingInstructions);
 };

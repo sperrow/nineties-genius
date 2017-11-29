@@ -14,24 +14,21 @@ class TrackShow extends React.Component {
     };
 
     this.handleRefClick = this.handleRefClick.bind(this);
+
+    const closeAnnotation = e => {
+      const a = document.getElementsByClassName('annotation-container')[0];
+      if (a && !a.contains(e.target) && !e.target.classList.contains('annotation-line')) {
+        this.setState({
+          referent: null
+        });
+      }
+    };
+
+    document.addEventListener('click', closeAnnotation);
   }
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId);
-  }
-
-  componentDidUpdate() {
-    const closeAnnotation = e => {
-      const a = document.getElementsByClassName('annotation-container')[0];
-      if (a && !a.contains(e.target)) {
-        this.setState({referent: null});
-        document.removeEventListener('click', closeAnnotation);
-      }
-    };
-
-    if (this.state.referent) {
-      document.addEventListener('click', closeAnnotation);
-    }
   }
 
   handleRefClick(refId) {
@@ -57,7 +54,7 @@ class TrackShow extends React.Component {
         lyrics =
           <Lyrics
             lyrics={track.lyrics}
-            fragment={track.referents}
+            referents={track.referents}
             handleClick={this.handleRefClick}
           />;
       }
