@@ -24,4 +24,6 @@ class Track < ApplicationRecord
     class_name: 'User',
     foreign_key: :author_id
   has_many :referents
+
+  include Commentable
 end

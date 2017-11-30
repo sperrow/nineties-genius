@@ -42,7 +42,7 @@ label {
   display: block;
 }
 
-input[type="text"], input[type="password"] {
+input[type="text"], input[type="password"], textarea, select {
   padding: .5em .6em;
   display: inline-block;
   border: 1px solid #ccc;

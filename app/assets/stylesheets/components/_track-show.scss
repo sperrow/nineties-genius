@@ -46,6 +46,7 @@
     font-size: 18px;
     line-height: 1.8;
     padding-bottom: 20px;
+    min-height: 200px;
   }
 
   .annotation-line {
@@ -55,53 +56,6 @@
     &:hover {
       background-color: $yellow;
     }
-  }
-
-  .annotation-container {
-    position: relative;
-    padding: 1rem 0 0 1rem;
-    line-height: 1.5;
-    white-space: pre-line;
-
-    &:before {
-      background-color: $annotation;
-      bottom: 0;
-      content: '';
-      display: block;
-      left: 0;
-      position: absolute;
-      top: 1rem;
-      width: 4px;
-    }
-  }
-
-  .annotation-arrow {
-    width: 40px;
-    height: 40px;
-    background-color: $annotation;
-    clip-path: polygon(100% 0, 50% 50%, 100% 100%);
-    position: absolute;
-    left: -36px;
-    top: 70px;
-
-    &:after {
-      content: '';
-      display: block;
-      width: 30px;
-      height: 30px;
-      background-color: white;
-      clip-path: polygon(100% 0, 50% 50%, 100% 100%);
-      position: absolute;
-      left: 10px;
-      top: 5px;
-    }
-  }
-
-  .annotation-heading {
-    font-size: 14px;
-    margin-bottom: 20px;
-    display: flex;
-    justify-content: space-between;
   }
 
   .genre {

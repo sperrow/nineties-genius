@@ -3,7 +3,9 @@ import React from 'react';
 import TrackHeader from './track_header';
 import TrackSecondary from './track_secondary';
 import Lyrics from './lyrics';
-import Annotation from './annotation';
+import CommentFormContainer from '../comment_form/comment_form_container';
+import Comments from './comments';
+import Annotations from './annotations';
 
 class TrackShow extends React.Component {
   constructor(props) {
@@ -13,6 +15,8 @@ class TrackShow extends React.Component {
     };
 
     this.handleRefClick = this.handleRefClick.bind(this);
+    this.handleNewComment = this.handleNewComment.bind(this);
+    this.handleNewAnnotationComment = this.handleNewAnnotationComment.bind(this);
 
     const closeAnnotation = e => {
       const a = document.getElementsByClassName('annotation-container')[0];
@@ -42,11 +46,29 @@ class TrackShow extends React.Component {
     };
   }
 
+  handleNewComment() {
+    this.props.fetchTrack(this.props.match.params.trackId);
+  }
+
+  handleNewAnnotationComment() {
+    this.props.fetchTrack(this.props.match.params.trackId)
+      .then(data => {
+        let refId = this.state.referent.id;
+        const referent = this.props.track.referents.find(ref => {
+          return ref.id === parseInt(refId);
+        });
+        this.setState({
+          referent
+        });
+      });
+  }
+
   render() {
     let details = null;
     if (this.props.track) {
       const track = this.props.track;
       let lyrics = null;
+      let comments = null;
 
       if (track.referents) {
         lyrics =
@@ -57,6 +79,13 @@ class TrackShow extends React.Component {
           />;
       }
 
+      if (track.comments) {
+        comments =
+          <Comments
+            comments={track.comments}
+          />;
+      }
+
       details = (
         <section className="track-show">
           <TrackHeader track={track} />
@@ -64,11 +93,22 @@ class TrackShow extends React.Component {
             <div className="row">
               <div className="col-7">
                 {lyrics}
+                <section className="comments-container">
+                  <CommentFormContainer
+                    commentableType="Track"
+                    commentableId={track.id}
+                    handleNewComment={this.handleNewComment}
+                  />
+                  {comments}
+                </section>
               </div>
               <div className="col-5">
                 {
                   this.state.referent ?
-                  <Annotation referent={this.state.referent} /> :
+                  <Annotations
+                    referent={this.state.referent}
+                    handleNewAnnotationComment={this.handleNewAnnotationComment}
+                  /> :
                   <TrackSecondary track={track} />
                 }
               </div>

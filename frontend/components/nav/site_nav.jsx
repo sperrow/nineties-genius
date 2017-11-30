@@ -22,7 +22,7 @@ const SiteNav = () => (
         </ul>
         <span className="divider">|</span>
         <ul className="links">
-          <li><Link to="/tracks/new">ADD A SONG</Link></li>
+          <li><NavLink to="/tracks/new" className="text-link">ADD A SONG</NavLink></li>
         </ul>
         <span className="divider">|</span>
         <ul className="links">
