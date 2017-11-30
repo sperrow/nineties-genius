@@ -4,20 +4,22 @@
   }
 
   .track-header {
-    padding: 20px 0;
+    padding: 20px 5vw;
     background-color: black;
     background-size: cover;
     background-position: center;
+    display: flex;
+    justify-content: flex-start;
   }
 
   .track-art {
     width: 220px;
     height: 220px;
-    margin-left: -30px;
   }
 
   .track-info {
     padding-top: 20px;
+    margin-left: 20px;
   }
 
   .track-title {
