@@ -42,6 +42,17 @@ label {
   display: block;
 }
 
+input[type="text"], input[type="password"] {
+  padding: .5em .6em;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-shadow: inset 0 1px 3px #ddd;
+  border-radius: 4px;
+  vertical-align: middle;
+  box-sizing: border-box;
+  font-size: 14px;
+}
+
 .label {
   color: $label;
 }
@@ -53,8 +64,29 @@ label {
   background-color: $yellow;
   cursor: pointer;
   outline: none;
+  font-weight: 700;
 
   &:hover {
-    background-color: $light-yellow;
+    background-color: $gray;
   }
+}
+
+.demo-btn {
+  background-color: $green;
+
+  &:hover {
+    background-color: $gray;
+  }
+}
+
+.input-container {
+  margin-top: 20px;
+}
+
+.submit-container {
+  margin-top: 60px;
+}
+
+.hr {
+  border-color: $hr;
 }

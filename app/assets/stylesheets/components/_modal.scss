@@ -1,19 +1,15 @@
 .modal {
   outline: none;
-  display: flex;
-  justify-content: center;
 
   .session-form-container {
-    margin: 60px 0 0 0;
-    color: black;
-    background-color: $light-gray;
+    border: 1px solid $hr;
+    width: 450px;
   }
 
   .close-btn {
     cursor: pointer;
-    position: absolute;
-    top: 60px;
-    right: 60px;
-    color: $light-gray;
+    position: relative;
+    top: -20px;
+    left: 226px;
   }
 }

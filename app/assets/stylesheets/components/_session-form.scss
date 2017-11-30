@@ -1,12 +1,46 @@
 .session-form-container {
+  position: relative;
   height: 500px;
-  width: 450px;
+  width: 420px;
   padding: 40px;
   margin: 60px auto;
   color: white;
   background-color: black;
-}
+  text-align: center;
 
-.input-container {
-  margin-top: 20px;
+  form {
+    margin-top: 80px;
+  }
+
+  .title {
+    text-transform: uppercase;
+  }
+
+  .label {
+    font-size: 14px;
+    margin-bottom: 4px;
+  }
+
+  input, button {
+    width: 80%;
+  }
+
+  .demo-btn {
+    margin-top: 20px;
+  }
+
+  .errors {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid $hr;
+    border-radius: 4px;
+    color: $label;
+  }
+
+  .change-link {
+    color: $label;
+  }
 }

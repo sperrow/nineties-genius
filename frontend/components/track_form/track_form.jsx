@@ -47,15 +47,8 @@ class TrackForm extends React.Component {
     }
   }
 
-  // update(field) {
-  //   return e => this.setState({
-  //     [field]: e.target.value
-  //   });
-  // }
-
   update(field) {
     return e => {
-      console.log(e.target.value);
       this.setState({
         [field]: e.target.value
       });

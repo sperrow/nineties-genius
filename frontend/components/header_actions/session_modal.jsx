@@ -13,6 +13,10 @@ class SessionModal extends React.Component {
     this.handleCloseModal = this.handleCloseModal.bind(this);
   }
 
+  componentWillReceiveProps() {
+    this.setState({ showModal: false });
+  }
+
   handleOpenModal () {
     this.setState({ showModal: true });
   }
@@ -37,8 +41,7 @@ class SessionModal extends React.Component {
              }
            }}
         >
-          <span className="close-btn" onClick={this.handleCloseModal}><i className="fa fa-times fa-2x" aria-hidden="true"></i></span>
-          <SessionFormContainer formType={this.props.formType} />
+          <SessionFormContainer formType={this.props.formType} handleCloseModal={this.handleCloseModal} />
         </ReactModal>
       </div>
     );
