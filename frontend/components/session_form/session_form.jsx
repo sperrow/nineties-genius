@@ -69,7 +69,7 @@ class SessionForm extends React.Component {
   render() {
     const title = this.props.formType === 'signup' ? 'Create a new account' : 'Sign in';
     const link = this.props.formType === 'signup' ? '/login' : '/signup';
-    const linkTitle = this.props.formType === 'login' ? 'Create a new account' : 'Sign in';
+    const linkTitle = this.props.formType === 'login' ? "Don't have an account? Sign up" : "Have an account? Sign in";
     let demoBtn = null;
     if (this.props.formType === 'login') {
       demoBtn = (

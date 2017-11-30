@@ -32,6 +32,15 @@ class TrackShow extends React.Component {
 
   componentDidMount() {
     this.props.fetchTrack(this.props.match.params.trackId);
+    if (this.state.referent) {
+      let refId = this.state.referent.id;
+      const referent = this.props.track.referents.find(ref => {
+        return ref.id === parseInt(refId);
+      });
+      this.setState({
+        referent
+      });
+    }
   }
 
   handleRefClick(refId) {
@@ -51,16 +60,7 @@ class TrackShow extends React.Component {
   }
 
   handleNewAnnotationComment() {
-    this.props.fetchTrack(this.props.match.params.trackId)
-      .then(data => {
-        let refId = this.state.referent.id;
-        const referent = this.props.track.referents.find(ref => {
-          return ref.id === parseInt(refId);
-        });
-        this.setState({
-          referent
-        });
-      });
+    this.props.fetchTrack(this.props.match.params.trackId);
   }
 
   render() {
