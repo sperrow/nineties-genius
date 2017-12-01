@@ -11,6 +11,7 @@ class TrackForm extends React.Component {
       genre: 'pop',
       album_title: '',
       release_date: '',
+      img_url: '',
       author_id: props.userId
     };
 
@@ -28,12 +29,16 @@ class TrackForm extends React.Component {
       const { id, title, lyrics, genre, artist, album } = newProps.track;
       let albumTitle = '';
       let releaseDate = '';
+      let imgUrl = '';
       if (album) {
         if (album.title) {
           albumTitle = album.title;
         }
         if (album.release_date) {
           releaseDate = album.release_date;
+        }
+        if (album.img_url) {
+          imgUrl = album.img_url;
         }
       }
       this.setState({
@@ -43,7 +48,8 @@ class TrackForm extends React.Component {
         genre,
         artist,
         album_title: albumTitle,
-        release_date: releaseDate
+        release_date: releaseDate,
+        img_url: imgUrl
       });
     }
 
@@ -55,7 +61,8 @@ class TrackForm extends React.Component {
         genre: 'pop',
         artist: '',
         album_title: '',
-        release_date: ''
+        release_date: '',
+        img_url: ''
       });
     }
   }
@@ -152,6 +159,14 @@ class TrackForm extends React.Component {
               value={this.state.release_date}
               onChange={this.update('release_date')}
             />
+          </div>
+          <div className="input-container">
+            <label>ALBUM COVER (URL)</label>
+            <input
+              type="text"
+              value={this.state.img_url}
+              onChange={this.update('img_url')}
+              />
           </div>
           <div className="input-container">
             <button type="submit" className="submit-btn">Submit</button>

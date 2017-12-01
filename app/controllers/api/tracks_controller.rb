@@ -18,6 +18,7 @@ class Api::TracksController < ApplicationController
         a.author_id = current_user.id
         a.artist_id = artist.id
         a.release_date = params[:track][:release_date]
+        a.img_url = params[:track][:img_url]
       end
     end
 
@@ -45,6 +46,7 @@ class Api::TracksController < ApplicationController
         a.author_id = current_user.id
         a.artist_id = artist.id
         a.release_date = params[:track][:release_date]
+        a.img_url = params[:track][:img_url]
       end
     end
 
