@@ -2,14 +2,23 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../utils/helpers';
 
-const TrackSecondary = ({ track }) => (
-  <div className="track-info-secondary">
+const TrackSecondary = ({ track }) => {
+  let releaseDate = 'unknown';
+
+  if (track.album) {
+    if (track.album.release_date) {
+      releaseDate = dateFormatter(track.album.release_date);
+    }
+  }
+
+  return (
+    <div className="track-info-secondary">
     <div className="row">
       <div className="col-4">
         <p className="label">Release Date</p>
       </div>
       <div className="col-8">
-        <p className="info-item">{dateFormatter(track.album_release_date)}</p>
+        <p className="info-item">{releaseDate}</p>
       </div>
     </div>
     <div className="row">
@@ -34,6 +43,7 @@ const TrackSecondary = ({ track }) => (
       </div>
     </div>
   </div>
-);
+  );
+};
 
 export default TrackSecondary;

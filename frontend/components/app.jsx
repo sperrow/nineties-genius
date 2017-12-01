@@ -15,6 +15,7 @@ import TrackFormContainer from './track_form/track_form_container';
 import TrackIndexContainer from './track_index/track_index_container';
 import TrackShowContainer from './track_show/track_show_container';
 import ArtistFormContainer from './artist_form/artist_form_container';
+import ArtistShowContainer from './artist_show/artist_show_container';
 
 const App = () => (
   <div>
@@ -28,6 +29,7 @@ const App = () => (
       <ProtectedRoute path="/artists/new" component={ArtistFormContainer} />
       <ProtectedRoute path="/artists/:artistId/edit" component={ArtistFormContainer} />
       <Route path="/tracks/:trackId" component={TrackShowContainer} />
+      <Route path="/artists/:artistId" component={ArtistShowContainer} />
     </Switch>
     <Footer />
   </div>

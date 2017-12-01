@@ -18,7 +18,8 @@ class Track < ApplicationRecord
   validates :title, :lyrics, presence: true
   validates :genre, inclusion: { in: ['pop', 'rock', 'rap', 'r&b', 'country', 'non-music'] }
 
-  belongs_to :album
+  belongs_to :album,
+    optional: true
   belongs_to :artist
   belongs_to :author,
     class_name: 'User',

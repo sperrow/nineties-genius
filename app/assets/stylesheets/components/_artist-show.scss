@@ -1,0 +1,25 @@
+.artist-show {
+  .artist-header {
+    padding: 20px 5vw;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .artist-art {
+    width: 220px;
+    height: 220px;
+  }
+
+  .artist-info {
+    padding-top: 20px;
+    margin-left: 20px;
+  }
+
+  .artist-name {
+    color: $yellow;
+    line-height: 1.125;
+  }
+}

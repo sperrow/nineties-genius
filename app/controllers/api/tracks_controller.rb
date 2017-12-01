@@ -7,6 +7,23 @@ class Api::TracksController < ApplicationController
 
   def create
     @track = Track.new(track_params)
+
+    artist = Artist.find_or_create_by(name: params[:track][:artist]) do |a|
+      a.author_id = current_user.id
+    end
+
+    if params[:track][:album_title]
+
+      album = Album.find_or_create_by(title: params[:track][:album_title]) do |a|
+        a.author_id = current_user.id
+        a.artist_id = artist.id
+        a.release_date = params[:track][:release_date]
+      end
+    end
+
+    @track.artist_id = artist.id
+    @track.album_id = album.id if album
+
     if @track.save
       render 'api/tracks/show'
     else
@@ -20,6 +37,20 @@ class Api::TracksController < ApplicationController
 
   def update
     @track = Track.find(params[:id])
+
+    artist = Artist.find_or_create_by(name: params[:track][:artist])
+
+    if params[:track][:album_title]
+      album = Album.find_or_create_by(title: params[:track][:album_title]) do |a|
+        a.author_id = current_user.id
+        a.artist_id = artist.id
+        a.release_date = params[:track][:release_date]
+      end
+    end
+
+    @track.artist_id = artist.id
+    @track.album_id = album.id if album
+
     if @track.update_attributes(track_params)
       render 'api/tracks/show'
     else
@@ -39,6 +70,6 @@ class Api::TracksController < ApplicationController
   private
 
   def track_params
-    params.require(:track).permit(:title, :author_id, :genre, :lyrics, :artist_id, :album_id)
+    params.require(:track).permit(:title, :author_id, :genre, :lyrics)
   end
 end

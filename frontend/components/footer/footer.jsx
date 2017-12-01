@@ -2,7 +2,7 @@ import React from 'react';
 
 const handleClick = e => {
   e.preventDefault();
-}
+};
 
 const Footer = () => (
   <footer className="footer">

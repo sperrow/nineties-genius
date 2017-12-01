@@ -1,23 +1,23 @@
 import { connect } from 'react-redux';
-import { fetchTrack, createTrack, updateTrack } from '../../actions/track_actions';
+import { fetchArtist, createArtist, updateArtist } from '../../actions/artist_actions';
 import ArtistForm from './artist_form';
 
 const mapStateToProps = (state, ownProps) => {
-  const track = ownProps.match.params.trackId ? state.entities.tracks[ownProps.match.params.trackId] : null;
+  const artist = ownProps.match.params.artistId ? state.entities.artists[ownProps.match.params.artistId] : null;
   return {
     userId: state.session.currentUser.id,
-    errors: state.errors.track,
-    track
+    errors: state.errors.artist,
+    artist
   };
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  const formType = ownProps.match.params.trackId ? 'update' : 'create';
-  const processForm = formType === 'update' ? updateTrack : createTrack;
+  const formType = ownProps.match.params.artistId ? 'update' : 'create';
+  const processForm = formType === 'update' ? updateArtist : createArtist;
 
   return {
-    processForm: track => dispatch(processForm(track)),
-    fetchTrack: id => dispatch(fetchTrack(id))
+    processForm: artist => dispatch(processForm(artist)),
+    fetchArtist: id => dispatch(fetchArtist(id))
   };
 };
 

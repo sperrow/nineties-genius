@@ -7,9 +7,10 @@ class TrackForm extends React.Component {
     this.state = {
       title: '',
       lyrics: '',
-      artist_id: '',
-      album_id: '',
+      artist: '',
       genre: 'pop',
+      album_title: '',
+      release_date: '',
       author_id: props.userId
     };
 
@@ -24,14 +25,25 @@ class TrackForm extends React.Component {
 
   componentWillReceiveProps(newProps) {
     if (newProps.track) {
-      const { id, title, lyrics, genre, artist_id, album_id } = newProps.track;
+      const { id, title, lyrics, genre, artist, album } = newProps.track;
+      let albumTitle = '';
+      let releaseDate = '';
+      if (album) {
+        if (album.title) {
+          albumTitle = album.title;
+        }
+        if (album.release_date) {
+          releaseDate = album.release_date;
+        }
+      }
       this.setState({
         id,
         title,
         lyrics,
         genre,
-        artist_id,
-        album_id
+        artist,
+        album_title: albumTitle,
+        release_date: releaseDate
       });
     }
 
@@ -41,8 +53,9 @@ class TrackForm extends React.Component {
         title: '',
         lyrics: '',
         genre: 'pop',
-        artist_id: '',
-        album_id: ''
+        artist: '',
+        album_title: '',
+        release_date: ''
       });
     }
   }
@@ -80,18 +93,18 @@ class TrackForm extends React.Component {
   render() {
     const title = this.props.match.params.trackId ? 'Edit Song' : 'Add Song';
     return (
-      <section className="track-form-container">
+      <section className="form-container">
         <h2>{title}</h2>
         <p className="required">* required</p>
         {this.renderErrors()}
         <hr className="hr" />
         <form onSubmit={this.handleSubmit}>
           <div className="input-container">
-            <label>BY * (id #)</label>
+            <label>BY *</label>
             <input
               type="text"
-              value={this.state.artist_id}
-              onChange={this.update('artist_id')}
+              value={this.state.artist}
+              onChange={this.update('artist')}
               />
           </div>
           <div className="input-container">
@@ -123,11 +136,21 @@ class TrackForm extends React.Component {
             />
           </div>
           <div className="input-container">
-            <label>ALBUM (id #)</label>
+            <label>ALBUM</label>
             <input
               type="text"
-              value={this.state.album_id}
-              onChange={this.update('album_id')}
+              value={this.state.album_title}
+              onChange={this.update('album_title')}
+            />
+          </div>
+          <div className="input-container">
+            <label>RELEASE DATE (1990-1999 ONLY)</label>
+            <input
+              type="date"
+              min="1990-01-01"
+              max="1999-12-31"
+              value={this.state.release_date}
+              onChange={this.update('release_date')}
             />
           </div>
           <div className="input-container">
