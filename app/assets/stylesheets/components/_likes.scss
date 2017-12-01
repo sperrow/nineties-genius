@@ -1,0 +1,46 @@
+.likes-container {
+  padding-top: 20px;
+
+  .btn {
+    color: $label;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .like-btn {
+    &:hover {
+      color: $like;
+    }
+
+    &.active {
+      color: $like;
+    }
+  }
+
+
+  .dislike-btn {
+    &:hover {
+      color: $dislike;
+    }
+  }
+
+  .like-count {
+    color: $like;
+    padding: 0 10px;
+    font-weight: 700;
+  }
+
+  .prompt {
+    padding: 0 20px 20px;
+    margin-top: 20px;
+    border: 2px solid $link;
+    background-color: $light-gray;
+    font-size: 14px;
+  }
+
+  .prompt-line {
+    padding-top: 20px;
+  }
+}

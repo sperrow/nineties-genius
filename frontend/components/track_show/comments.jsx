@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
 import { dateAgoFormatter } from '../../utils/helpers';
+import LikesContainer from '../likes/likes_container';
 
 class Comments extends React.Component {
   constructor(props) {
@@ -9,6 +10,8 @@ class Comments extends React.Component {
 
   render() {
     const comments = this.props.comments.reverse();
+    const countLikes = likes => likes.length === 0 ? null : `+${likes.length}`;
+
     return (
       <div className="comments-list">
         <hr className="hr" />
@@ -22,6 +25,7 @@ class Comments extends React.Component {
                     <span className="date">{dateAgoFormatter(comment.created_at)} ago</span>
                   </div>
                   <p>{comment.body}</p>
+                  <LikesContainer comment={comment} />
                 </div>
                 <hr className="hr" />
               </li>
