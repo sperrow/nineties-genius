@@ -45,9 +45,6 @@ class TrackShow extends React.Component {
   handleRefClick(refId) {
     return (e) => {
       e.preventDefault();
-      this.setState({
-        referent: null
-      });
       const referent = this.props.track.referents.find(ref => {
         return ref.id === parseInt(refId);
       });
