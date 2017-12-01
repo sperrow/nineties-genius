@@ -10,7 +10,7 @@ const TrackHeader = ({ track }) => {
   }
 
   let albumLink = track.album_id ? (
-    <Link to={`albums/${track.album_id}`}>{track.album.title}</Link>
+    <Link to={`/albums/${track.album_id}`}>{track.album.title}</Link>
   ) : 'unknown';
 
   return (

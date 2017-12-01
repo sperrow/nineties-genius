@@ -1,0 +1,42 @@
+.album-show {
+  a {
+    text-decoration: none;
+  }
+
+  .album-header {
+    padding: 20px 5vw;
+    background-color: black;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: flex-start;
+  }
+
+  .album-art {
+    width: 220px;
+    height: 220px;
+  }
+
+  .album-info {
+    padding-top: 20px;
+    margin-left: 20px;
+  }
+
+  .album-title {
+    color: $yellow;
+    line-height: 1.125;
+  }
+
+  .album-artist {
+    line-height: 1.45;
+
+    a {
+      color: white;
+    }
+  }
+
+  .album-date {
+    color: $label;
+    line-height: 1.45;
+  }
+}
