@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy]
     resources :comment_likes, only: [:create, :destroy]
     resources :annotation_likes, only: [:create, :destroy]
+    resources :stories, only: [:index]
   end
 
   root "static_pages#root"

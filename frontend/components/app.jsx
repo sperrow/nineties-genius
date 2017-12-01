@@ -18,6 +18,7 @@ import ArtistFormContainer from './artist_form/artist_form_container';
 import ArtistShowContainer from './artist_show/artist_show_container';
 import AlbumFormContainer from './album_form/album_form_container';
 import AlbumShowContainer from './album_show/album_show_container';
+import Index from './index/index';
 
 const App = () => (
   <div>
@@ -25,7 +26,7 @@ const App = () => (
     <Switch>
       <AuthRoute path="/login" component={() => <SessionFormContainer formType="login" />} />
       <AuthRoute path="/signup" component={() => <SessionFormContainer formType="signup" />} />
-      <Route exact path="/" component={TrackIndexContainer} />
+      <Route exact path="/" component={Index} />
       <ProtectedRoute path="/tracks/new" component={TrackFormContainer} />
       <ProtectedRoute path="/tracks/:trackId/edit" component={TrackFormContainer} />
       <ProtectedRoute path="/artists/new" component={ArtistFormContainer} />

@@ -6,6 +6,15 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Story.create(title: 'Madonna in Wonderland', img_url: 'https://i.imgur.com/VZTyGRw.jpg', site_url: 'https://www.vanityfair.com/magazine/1992/10/madonna199210')
+Story.create(title: 'Michael Jackson Collapses At Rehearsal', img_url: 'https://i.imgur.com/bmQHplw.jpg', site_url: 'http://www.nytimes.com/1995/12/07/nyregion/michael-jackson-collapses-at-rehearsal.html')
+Story.create(title: 'Kylie Minogue - Pop Princess', img_url: 'https://i.imgur.com/fxBu7PD.jpg', site_url: 'http://jimshelley.com/music/kylie-minogue/')
+Story.create(title: 'Love Loses It at Lollapalooza', img_url: 'https://i.imgur.com/Ob6FhEN.jpg', site_url: 'http://www.sfgate.com/entertainment/article/Love-Loses-It-at-Lollapalooza-Hole-s-Shoreline-3026070.php')
+Story.create(title: 'Nirvana: Inside the Heart and Mind of Kurt Cobain', img_url: 'https://i.imgur.com/x73DPDY.jpg', site_url: 'http://www.rollingstone.com/music/news/nirvana-inside-the-heart-and-mind-of-kurt-cobain-19920416')
+Story.create(title: "TLC's glam goddesses resurface with 'Fan Mail'", img_url: 'https://i.imgur.com/rweqNLy.jpg', site_url: 'http://www.cnn.com/SHOWBIZ/Music/9902/25/tlc/index.html?related')
+Story.create(title: 'Alanis Morissette: The Adventures of Miss Thing', img_url: 'https://i.imgur.com/aAqn22z.jpg', site_url: 'http://www.rollingstone.com/music/news/alanis-morissette-the-adventures-of-miss-thing-19951102')
+Story.create(title: 'Spice Girls: Too Hot to Handle', img_url: 'https://i.imgur.com/HFiMa4f.jpg', site_url: 'http://www.rollingstone.com/music/news/spice-girls-too-hot-to-handle-19970710')
+
 User.create(username: 'sperrow', password: 'password')
 User.create(username: 'demo_user', password: 'password')
 User.create(username: 'patrick', password: 'password')

@@ -1,0 +1,52 @@
+.stories-show {
+  height: 350px;
+  padding-top: 20px;
+
+  .story-container {
+    position: relative;
+    height: 300px;
+    overflow: hidden;
+  }
+
+  .story-link {
+    display: block;
+    height: 300px;
+  }
+
+  .story-img {
+    width: 100%;
+  }
+
+  .story-title {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 32px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  .story-container-small {
+    position: relative;
+    height: 140px;
+    overflow: hidden;
+
+    .story-link {
+      height: 140px;
+    }
+
+    .story-title {
+      font-size: 24px;
+      width: 80%;
+    }
+  }
+
+  .right-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 300px;
+  }
+}
