@@ -1,22 +1,19 @@
 .track-list {
   width: 90%;
   margin: 0 auto 40px;
-}
+  border-top: 2px solid black;
 
-.track-item {
-  cursor: pointer;
-  border: 1px solid black;
-  border-bottom: none;
-  display: flex;
-  justify-content: space-between;
-  padding: 10px;
-  background-color: white;
+  .track-item {
+    cursor: pointer;
+    border-bottom: 1px solid $hr;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: white;
 
-  &:last-child {
-    border-bottom: 1px solid black;
-  }
-
-  &:hover {
-    background-color: $gray;
+    &:hover {
+      background-color: $gray;
+    }
   }
 }

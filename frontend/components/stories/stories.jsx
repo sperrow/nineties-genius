@@ -22,7 +22,7 @@ class Stories extends React.Component {
       }
 
       details = (
-        <section className="stories-show">
+        <section className="stories-show container">
           <div className="row">
             <div className="col-12">
               <label className="label">FEATURED STORIES</label>

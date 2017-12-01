@@ -16,8 +16,8 @@ class TrackIndexItem extends React.Component {
     const track = this.props.track;
     return (
       <div className="track-item" onClick={this.handleClick}>
-        <span>Title: {track.title}</span>
-        <span>Artist: {track.artist}</span>
+        <h2 className="title">{track.title}</h2>
+        <span className="artist">{track.artist}</span>
       </div>
     );
   }
