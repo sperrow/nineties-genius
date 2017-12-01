@@ -11,10 +11,17 @@
   .story-link {
     display: block;
     height: 300px;
+
+    &:hover {
+      .story-img {
+        filter: brightness(1);
+      }
+    }
   }
 
   .story-img {
     width: 100%;
+    filter: brightness(0.5);
   }
 
   .story-title {
