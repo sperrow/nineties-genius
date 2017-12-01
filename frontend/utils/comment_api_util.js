@@ -5,3 +5,10 @@ export const createComment = data => (
     data
   })
 );
+
+export const destroyComment = id => (
+  $.ajax({
+    method: 'DELETE',
+    url: `api/comments/${id}`
+  })
+);

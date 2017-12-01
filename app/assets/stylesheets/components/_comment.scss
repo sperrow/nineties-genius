@@ -32,6 +32,12 @@
   justify-content: space-between;
 }
 
+.comment-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
 .author {
   font-weight: 700;
 }
@@ -39,4 +45,11 @@
 .date {
   color: $label;
   font-size: 12px;
+}
+
+.delete-btn {
+  &:hover {
+    cursor: pointer;
+    color: $dislike;
+  }
 }

@@ -14,6 +14,7 @@ import SessionFormContainer from './session_form/session_form_container';
 import TrackFormContainer from './track_form/track_form_container';
 import TrackIndexContainer from './track_index/track_index_container';
 import TrackShowContainer from './track_show/track_show_container';
+import ArtistFormContainer from './artist_form/artist_form_container';
 
 const App = () => (
   <div>
@@ -24,6 +25,8 @@ const App = () => (
       <Route exact path="/" component={TrackIndexContainer} />
       <ProtectedRoute path="/tracks/new" component={TrackFormContainer} />
       <ProtectedRoute path="/tracks/:trackId/edit" component={TrackFormContainer} />
+      <ProtectedRoute path="/artists/new" component={ArtistFormContainer} />
+      <ProtectedRoute path="/artists/:artistId/edit" component={ArtistFormContainer} />
       <Route path="/tracks/:trackId" component={TrackShowContainer} />
     </Switch>
     <Footer />

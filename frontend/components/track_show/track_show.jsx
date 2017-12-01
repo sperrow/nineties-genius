@@ -4,33 +4,32 @@ import TrackHeader from './track_header';
 import TrackSecondary from './track_secondary';
 import Lyrics from './lyrics';
 import CommentFormContainer from '../comment_form/comment_form_container';
-import Comments from './comments';
+import CommentsContainer from '../comments/comments_container';
 import Annotations from './annotations';
 
 class TrackShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      referent: null
+      referent: null,
+      track: props.track
     };
 
     this.handleRandomClick = this.handleRandomClick.bind(this);
     this.handleRefClick = this.handleRefClick.bind(this);
     this.handleNewComment = this.handleNewComment.bind(this);
-    this.handleNewAnnotationComment = this.handleNewAnnotationComment.bind(this);
   }
 
   componentDidMount() {
-    this.props.fetchTrack(this.props.match.params.trackId);
-    if (this.state.referent) {
-      let refId = this.state.referent.id;
-      const referent = this.props.track.referents.find(ref => {
-        return ref.id === parseInt(refId);
+    this.props.fetchTrack(this.props.match.params.trackId)
+      .then(data => {
+        let track = data.track;
+        this.setState({ track });
       });
-      this.setState({
-        referent
-      });
-    }
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({ track: newProps.track });
   }
 
   handleRandomClick(e) {
@@ -45,7 +44,7 @@ class TrackShow extends React.Component {
   handleRefClick(refId) {
     return (e) => {
       e.preventDefault();
-      const referent = this.props.track.referents.find(ref => {
+      const referent = this.state.track.referents.find(ref => {
         return ref.id === parseInt(refId);
       });
       this.setState({
@@ -55,17 +54,29 @@ class TrackShow extends React.Component {
   }
 
   handleNewComment() {
-    this.props.fetchTrack(this.props.match.params.trackId);
-  }
+    this.props.fetchTrack(this.props.match.params.trackId)
+      .then(data => {
+        let track = data.track;
+        let referent = null;
 
-  handleNewAnnotationComment() {
-    this.props.fetchTrack(this.props.match.params.trackId);
+        if (this.state.referent) {
+          let refId = this.state.referent.id;
+          referent = track.referents.find(ref => {
+            return ref.id === parseInt(refId);
+          });
+        }
+
+        this.setState({
+          track,
+          referent
+        });
+      });
   }
 
   render() {
     let details = null;
-    if (this.props.track) {
-      const track = this.props.track;
+    if (this.state.track) {
+      const track = this.state.track;
       let lyrics = null;
       let comments = null;
 
@@ -80,7 +91,7 @@ class TrackShow extends React.Component {
 
       if (track.comments) {
         comments =
-          <Comments
+          <CommentsContainer
             comments={track.comments}
           />;
       }
@@ -106,7 +117,7 @@ class TrackShow extends React.Component {
                   this.state.referent ?
                   <Annotations
                     referent={this.state.referent}
-                    handleNewAnnotationComment={this.handleNewAnnotationComment}
+                    handleNewComment={this.handleNewComment}
                   /> :
                   <TrackSecondary track={track} />
                 }

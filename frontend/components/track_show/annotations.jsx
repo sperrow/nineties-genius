@@ -1,16 +1,24 @@
 import React from 'react';
 import { dateAgoFormatter } from '../../utils/helpers';
 import CommentFormContainer from '../comment_form/comment_form_container';
-import Comments from './comments';
+import CommentsContainer from '../comments/comments_container';
 import LikesContainer from '../likes/likes_container';
 
 class Annotations extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      annotations: props.referent.annotations
+    };
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({annotations: newProps.referent.annotations});
   }
 
   render() {
-    const annotations = this.props.referent.annotations;
+    const annotations = this.state.annotations;
     let line = document.getElementsByClassName(`ref-${this.props.referent.id}`)[0];
     let top = line.offsetTop - 80;
     top = top >= 0 ? top : 0;
@@ -32,9 +40,9 @@ class Annotations extends React.Component {
                   <CommentFormContainer
                     commentableType="Annotation"
                     commentableId={annotation.id}
-                    handleNewComment={this.props.handleNewAnnotationComment}
+                    handleNewComment={this.props.handleNewComment}
                   />
-                  <Comments
+                <CommentsContainer
                     comments={annotation.comments}
                   />
                 </section>

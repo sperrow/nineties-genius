@@ -12,3 +12,7 @@ export const createComment = comment => dispatch => (
     dispatch(receiveComment(createdComment))
   ))
 );
+
+export const destroyComment = id => dispatch => (
+  APIUtil.destroyComment(id)
+);

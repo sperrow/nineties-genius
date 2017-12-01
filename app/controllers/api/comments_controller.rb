@@ -10,6 +10,15 @@ class Api::CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      render json: { message: "deleted" }, status: :ok
+    else
+      render json: @comment.errors.full_messages, status: 422
+    end
+  end
+
   private
 
   def comment_params
