@@ -14,20 +14,10 @@ class TrackShow extends React.Component {
       referent: null
     };
 
+    this.handleRandomClick = this.handleRandomClick.bind(this);
     this.handleRefClick = this.handleRefClick.bind(this);
     this.handleNewComment = this.handleNewComment.bind(this);
     this.handleNewAnnotationComment = this.handleNewAnnotationComment.bind(this);
-
-    const closeAnnotation = e => {
-      const a = document.getElementsByClassName('annotation-container')[0];
-      if (a && !a.contains(e.target) && !e.target.classList.contains('annotation-line')) {
-        this.setState({
-          referent: null
-        });
-      }
-    };
-
-    document.addEventListener('click', closeAnnotation);
   }
 
   componentDidMount() {
@@ -43,9 +33,21 @@ class TrackShow extends React.Component {
     }
   }
 
+  handleRandomClick(e) {
+    const a = document.getElementsByClassName('annotation-container')[0];
+    if (a && !a.contains(e.target) && !e.target.classList.contains('annotation-line')) {
+      this.setState({
+        referent: null
+      });
+    }
+  }
+
   handleRefClick(refId) {
     return (e) => {
       e.preventDefault();
+      this.setState({
+        referent: null
+      });
       const referent = this.props.track.referents.find(ref => {
         return ref.id === parseInt(refId);
       });
@@ -87,7 +89,7 @@ class TrackShow extends React.Component {
       }
 
       details = (
-        <section className="track-show">
+        <section className="track-show" onClick={this.handleRandomClick}>
           <TrackHeader track={track} />
           <div className="container">
             <div className="row">

@@ -20,6 +20,7 @@
     height: 40px;
     background-color: $annotation;
     clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    -webkit-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
     position: absolute;
     left: -36px;
     top: 70px;
@@ -31,6 +32,7 @@
       height: 30px;
       background-color: white;
       clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+      -webkit-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
       position: absolute;
       left: 10px;
       top: 5px;
