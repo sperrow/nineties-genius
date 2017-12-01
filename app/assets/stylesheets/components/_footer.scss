@@ -15,15 +15,16 @@
   }
 
   a {
-    color: yellow;
+    color: $pink;
     text-decoration: none;
 
     &:hover {
-      color: $link;
+      color: $light-pink;
     }
   }
 
   .copyright {
     color: $legal;
+    font-size: 14px;
   }
 }

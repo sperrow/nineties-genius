@@ -3,42 +3,6 @@
     text-decoration: none;
   }
 
-  .track-header {
-    padding: 20px 5vw;
-    background-color: black;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: flex-start;
-  }
-
-  .track-art {
-    width: 220px;
-    height: 220px;
-  }
-
-  .track-info {
-    padding-top: 20px;
-    margin-left: 20px;
-  }
-
-  .track-title {
-    color: $yellow;
-    line-height: 1.125;
-  }
-
-  .track-artist {
-    line-height: 1.45;
-
-    a {
-      color: white;
-    }
-  }
-
-  .track-album {
-    line-height: 1.45;
-  }
-
   .container {
     background-color: white;
     padding-top: 10px;
