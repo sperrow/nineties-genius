@@ -5,13 +5,13 @@ class Likes extends React.Component {
   constructor(props) {
     super(props);
 
-    const userLike = this.props.comment.likes.find(like => {
+    const userLike = this.props.likeTarget.likes.find(like => {
       return like.author_id === this.props.userId;
     });
 
     this.state = {
       userLike,
-      count: this.props.comment.likes.length,
+      count: this.props.likeTarget.likes.length,
       warning: false
     };
 
@@ -20,15 +20,24 @@ class Likes extends React.Component {
   }
 
   handleLike() {
-    if (!this.state.userId) {
+    if (!this.props.userId) {
       this.setState({ warning: true });
     } else if (!this.state.userLike) {
       let like = {
         author_id: this.props.userId,
-        comment_id: this.props.comment.id
       };
-      this.props.createLike({comment_like: like}).
-        then(data => {
+      let params = {};
+
+      if (this.props.likeType === 'comment') {
+        like.comment_id = this.props.likeTarget.id;
+        params.comment_like = like;
+      } else {
+        like.annotation_id = this.props.likeTarget.id;
+        params.annotation_like = like;
+      }
+
+      this.props.createLike(params)
+        .then(data => {
           this.setState({
             userLike: data,
             count: this.state.count + 1,
@@ -39,11 +48,11 @@ class Likes extends React.Component {
   }
 
   handleUnlike() {
-    if (!this.state.userId) {
+    if (!this.props.userId) {
       this.setState({ warning: true });
     } else if (this.state.userLike) {
-      this.props.destroyLike(this.state.userLike.id).
-        then(data => {
+      this.props.destroyLike(this.state.userLike.id)
+        .then(data => {
           this.setState({
             userLike: null,
             count: this.state.count - 1,
@@ -54,10 +63,10 @@ class Likes extends React.Component {
   }
 
   render() {
-    const likes = this.props.comment.likes;
+    const likes = this.props.likeTarget.likes;
     const likesCount = this.state.count === 0 ? null : `+${this.state.count}`;
-
     const classNames = this.state.userLike ? 'like-btn btn active' : 'like-btn btn';
+
     const prompt = (
       <div className="prompt">
         <p className="prompt-line">Have an account? <Link to="/login">Sign in</Link></p>

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux';
-import { createLike, destroyLike } from '../../actions/comment_like_actions';
+import { createCommentLike, destroyCommentLike } from '../../actions/comment_like_actions';
+import { createAnnotationLike, destroyAnnotationLike } from '../../actions/annotation_like_actions';
 import Likes from './likes';
 
 const mapStateToProps = state => {
@@ -13,9 +14,18 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  createLike: like => dispatch(createLike(like)),
-  destroyLike: like => dispatch(destroyLike(like))
-});
+const mapDispatchToProps = (dispatch, ownProps) => {
+  if (ownProps.likeType === 'comment') {
+    return {
+      createLike: like => dispatch(createCommentLike(like)),
+      destroyLike: like => dispatch(destroyCommentLike(like))
+    };
+  } else {
+    return {
+      createLike: like => dispatch(createAnnotationLike(like)),
+      destroyLike: like => dispatch(destroyAnnotationLike(like))
+    };
+  }
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Likes);

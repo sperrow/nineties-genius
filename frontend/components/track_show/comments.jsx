@@ -25,7 +25,7 @@ class Comments extends React.Component {
                     <span className="date">{dateAgoFormatter(comment.created_at)} ago</span>
                   </div>
                   <p>{comment.body}</p>
-                  <LikesContainer comment={comment} />
+                  <LikesContainer likeTarget={comment} likeType="comment" />
                 </div>
                 <hr className="hr" />
               </li>

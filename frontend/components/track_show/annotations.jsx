@@ -2,6 +2,7 @@ import React from 'react';
 import { dateAgoFormatter } from '../../utils/helpers';
 import CommentFormContainer from '../comment_form/comment_form_container';
 import Comments from './comments';
+import LikesContainer from '../likes/likes_container';
 
 class Annotations extends React.Component {
   constructor(props) {
@@ -26,6 +27,7 @@ class Annotations extends React.Component {
                   <span>{dateAgoFormatter(annotation.created_at)} ago</span>
                 </div>
                 <p>{annotation.body}</p>
+                <LikesContainer likeTarget={annotation} likeType="annotation" />
                 <section className="comments-container">
                   <CommentFormContainer
                     commentableType="Annotation"

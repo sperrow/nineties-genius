@@ -18,5 +18,6 @@ json.referents @track.referents do |ref|
     json.comments ann.comments do |com|
       json.partial! 'api/comments/comment', comment: com
     end
+    json.likes ann.likes
   end
 end
