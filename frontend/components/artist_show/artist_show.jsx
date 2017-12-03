@@ -33,12 +33,28 @@ class ArtistShow extends React.Component {
             <img className="artist-art" src={imgUrl} />
             <div className="artist-info">
               <h1 className="artist-name">{artist.name}</h1>
+              <Link to={`/artists/${artist.id}/edit`}>Edit Artist</Link>
             </div>
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-7">
-                <Link to={`/artists/${artist.id}/edit`}>Edit Artist</Link>
+              <div className="col-12">
+                <h2 className="albums-heading">Albums</h2>
+                <hr className="hr" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <div className="albums">
+                  {
+                    artist.albums.map(album => (
+                      <div key={album.id} className="album">
+                        <img src={album.img_url} className="artist-art" />
+                        <p className="album-link"><Link to={`/albums/${album.id}`}>{album.title}</Link></p>
+                      </div>
+                    ))
+                  }
+                </div>
               </div>
             </div>
           </div>

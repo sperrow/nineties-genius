@@ -3,7 +3,9 @@ import TrackIndexItem from './track_index_item';
 
 class TrackIndex extends React.Component {
   componentDidMount() {
-    this.props.fetchTracks();
+    if (!this.props.album) {
+      this.props.fetchTracks();
+    }
   }
 
   render() {
@@ -11,7 +13,13 @@ class TrackIndex extends React.Component {
       <section className="track-list">
         {
           this.props.tracks.map(track => (
-            <TrackIndexItem track={track} key={track.id} />
+            <TrackIndexItem
+              track={track}
+              key={track.id}
+              art={
+                this.props.showArt ? true : false
+              }
+            />
           ))
         }
       </section>

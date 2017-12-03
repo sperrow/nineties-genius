@@ -67,16 +67,12 @@ input[type="text"], input[type="password"], input[type="date"], textarea, select
   font-weight: 700;
 
   &:hover {
-    background-color: $gray;
+    background-color: $button;
   }
 }
 
 .demo-btn {
   background-color: $green;
-
-  &:hover {
-    background-color: $gray;
-  }
 }
 
 .input-container {

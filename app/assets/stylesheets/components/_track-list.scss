@@ -7,13 +7,22 @@
     cursor: pointer;
     border-bottom: 1px solid $hr;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 20px;
     background-color: white;
 
     &:hover {
       background-color: $gray;
+    }
+
+    .album-img {
+      width: 40px;
+      height: 40px;
+      margin-right: 40px;
+    }
+
+    .track-info {
+      flex-direction: column;
+      justify-content: space-between;
     }
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { dateFormatter } from '../../utils/helpers';
+import TrackIndexContainer from '../track_index/track_index_container';
 
 class AlbumShow extends React.Component {
   constructor(props) {
@@ -36,12 +37,19 @@ class AlbumShow extends React.Component {
               <h1 className="album-title">{album.title}</h1>
               <h2 className="album-artist"><Link to={`/artists/${album.artist_id}`}>{album.artist}</Link></h2>
               <p className="album-date">{dateFormatter(album.release_date)}</p>
+              <Link to={`/albums/${album.id}/edit`}>Edit Album</Link>
             </div>
           </div>
           <div className="container">
             <div className="row">
-              <div className="col-7">
-                <Link to={`/albums/${album.id}/edit`}>Edit Album</Link>
+              <div className="col-12">
+                <h2 className="tracks-heading">Tracks</h2>
+                <hr className="hr" />
+              </div>
+            </div>
+            <div className="row">
+              <div className="col-12">
+                <TrackIndexContainer tracks={album.tracks} />
               </div>
             </div>
           </div>

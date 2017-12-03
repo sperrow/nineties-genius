@@ -78,14 +78,6 @@ class SessionForm extends React.Component {
     }
     return (
       <div className="session-form-container">
-        {
-          this.props.handleCloseModal ?
-          <span
-            className="close-btn"
-            onClick={this.props.handleCloseModal}>
-            <i className="fa fa-times fa-2x" aria-hidden="true"></i>
-          </span> : null
-        }
         <h2 className="title">{title}</h2>
         <hr className="hr" />
         {this.renderErrors()}

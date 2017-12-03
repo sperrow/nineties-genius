@@ -39,12 +39,11 @@ const TrackSecondary = ({ track }) => {
     </div>
     <div className="row">
       <div className="col-12">
-        <p className="info-item"><Link to={`/tracks/${track.id}/edit`}>Edit Song</Link></p>
-      </div>
-    </div>
-    <div className="row">
-      <div className="col-12">
-        <p className="info-item"><Link to={`/tracks/${track.id}/annotations/new`}>Add Annotation</Link></p>
+        <p className="info-item">
+          <Link to={`/tracks/${track.id}/annotations/new`}>
+            <button className="submit-btn annotation-btn">Add Annotation</button>
+          </Link>
+        </p>
       </div>
     </div>
   </div>

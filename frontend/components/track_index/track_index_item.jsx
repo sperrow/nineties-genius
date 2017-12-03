@@ -9,15 +9,29 @@ class TrackIndexItem extends React.Component {
 
   handleClick() {
     const trackId = this.props.track.id;
-    this.props.history.push(`tracks/${trackId}`);
+    this.props.history.push(`/tracks/${trackId}`);
   }
 
   render() {
     const track = this.props.track;
+
+    let imgUrl = null;
+    if (track.album) {
+      imgUrl = track.album.img_url;
+    }
+
+    let img = null;
+    if (this.props.art) {
+      img = <img className="album-img" src={imgUrl} />;
+    }
+
     return (
       <div className="track-item" onClick={this.handleClick}>
-        <h2 className="title">{track.title}</h2>
-        <span className="artist">{track.artist}</span>
+        {img}
+        <div className="track-info">
+          <h2 className="title">{track.title}</h2>
+          <span className="artist">{track.artist}</span>
+        </div>
       </div>
     );
   }
