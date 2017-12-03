@@ -19,7 +19,7 @@ const TrackHeader = ({ track }) => {
       }>
       <img className="track-art" src={imgUrl} />
       <div className="track-info">
-        <h1 className="track-title">{track.title}</h1>
+        <h1 className="track-title"><Link to={`/tracks/${track.id}`}>{track.title}</Link></h1>
         <h2 className="track-artist"><Link to={`/artists/${track.artist_id}`}>{track.artist}</Link></h2>
         <p className="track-album label">Album {albumLink}</p>
       </div>

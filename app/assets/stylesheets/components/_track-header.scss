@@ -17,8 +17,11 @@
   }
 
   .track-title {
-    color: $yellow;
     line-height: 1.125;
+
+    a {
+      color: $yellow;
+    }
   }
 
   .track-artist {

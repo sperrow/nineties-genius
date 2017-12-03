@@ -11,7 +11,7 @@ class Stories extends React.Component {
   }
 
   render() {
-    let details = <p>hi</p>;
+    let details = null;
     if (this.props.stories.length) {
       const stories = [];
       let propStories = this.props.stories.slice();

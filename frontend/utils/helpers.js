@@ -75,3 +75,46 @@ export const convertLyrics = (lyrics, referents) => {
 
   return addBreaks(lyrics);
 };
+
+export const convertLyricsForm = (lyrics, referents) => {
+
+  const addNewLines = str => {
+    return str.replace(/(?:\r\n|\r|\n)/g, '\\n');
+  };
+
+  const addRef = (l, ref) => {
+    let fragment = addNewLines(ref.fragment);
+    let i = l.indexOf(fragment);
+    if (i > -1) {
+      let f = addBreaks(fragment);
+      let str = `<span ref-id="${ref.id}">${f}</span>`;
+      l = l.substring(0, i) + str + l.substring(i + fragment.length);
+    }
+    return l;
+  };
+
+  const wrapLines = str => {
+    let arr = str.split('\\n');
+    let lines = arr.map(line => {
+      return `<p class="line">${line}</p>`;
+    });
+
+    return lines.join('\\n');
+  };
+
+  const addBreaks = str => {
+    return str.replace(/\\n/g, '<br />');
+  };
+
+  lyrics = addNewLines(lyrics);
+
+  referents.forEach((ref) => {
+    lyrics = addRef(lyrics, ref);
+  });
+
+  lyrics = wrapLines(lyrics);
+
+  lyrics = addBreaks(lyrics);
+
+  return `<div class="lyrics">${lyrics}</div>`;
+};

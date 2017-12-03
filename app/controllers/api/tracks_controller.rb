@@ -13,7 +13,6 @@ class Api::TracksController < ApplicationController
     end
 
     if params[:track][:album_title]
-
       album = Album.find_or_create_by(title: params[:track][:album_title]) do |a|
         a.author_id = current_user.id
         a.artist_id = artist.id
