@@ -1,0 +1,21 @@
+.artist-list {
+  margin-bottom: 40px;
+  border-top: 2px solid black;
+
+  .artist-item {
+    cursor: pointer;
+    border-bottom: 1px solid $hr;
+    display: flex;
+    padding: 6px 20px;
+    background-color: white;
+
+    &:hover {
+      background-color: $gray;
+    }
+
+    .artist-info {
+      flex-direction: column;
+      justify-content: space-between;
+    }
+  }
+}

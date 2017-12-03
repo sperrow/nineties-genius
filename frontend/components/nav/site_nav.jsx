@@ -11,7 +11,7 @@ const SiteNav = () => (
     <nav className="secondary-nav">
         <ul className="links">
           <li><NavLink to="/" className="text-link">FEATURED STORIES</NavLink></li>
-          <li><NavLink to="/" className="text-link">TOP SONGS</NavLink></li>
+          <li><NavLink to="/artists" className="text-link">ARTISTS</NavLink></li>
           <li>
             <a
             className="text-link"

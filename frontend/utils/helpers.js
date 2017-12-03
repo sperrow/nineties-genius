@@ -1,3 +1,15 @@
+export const storyRandomizer = array => {
+  const stories = [];
+  let arr = array.slice();
+  for (let i = 0; i < 3; i++) {
+    let rand = Math.floor(Math.random() * arr.length);
+    stories.push(arr[rand]);
+    arr.splice(rand, 1);
+  }
+
+  return stories;
+};
+
 export const dateFormatter = str => {
   const months = ['January', 'February', 'March', 'April', 'May', 'June',
     'July', 'August', 'September', 'October', 'November', 'December'];

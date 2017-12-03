@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { storyRandomizer } from '../../utils/helpers';
 
 class Stories extends React.Component {
   constructor(props) {
@@ -7,19 +8,19 @@ class Stories extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchStories();
+    if (!this.props.stories.length) {
+      this.props.fetchStories();
+    }
+  }
+
+  shouldComponentUpdate(nextProps) {
+    return this.props.stories.length === 0;
   }
 
   render() {
     let details = null;
     if (this.props.stories.length) {
-      const stories = [];
-      let propStories = this.props.stories.slice();
-      for (let i = 0; i < 3; i++) {
-        let rand = Math.floor(Math.random() * propStories.length);
-        stories.push(propStories[rand]);
-        propStories.splice(rand, 1);
-      }
+      const stories = storyRandomizer(this.props.stories);
 
       details = (
         <section className="stories-show container">
