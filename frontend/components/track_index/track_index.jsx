@@ -9,10 +9,24 @@ class TrackIndex extends React.Component {
   }
 
   render() {
+    let tracks = this.props.tracks;
+    if (!this.props.album) {
+      tracks = tracks.sort((a, b) => {
+        if (a.popularity < b.popularity) {
+          return 1;
+        } else if (a.popularity > b.popularity) {
+          return -1;
+        } else {
+          return 0;
+        }
+      });
+      tracks = tracks.slice(0, 20);
+    }
+
     return (
       <section className="track-list">
         {
-          this.props.tracks.map(track => (
+          tracks.map(track => (
             <TrackIndexItem
               track={track}
               key={track.id}

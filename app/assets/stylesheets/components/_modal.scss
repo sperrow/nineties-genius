@@ -1,17 +1,15 @@
 .modal {
   position: absolute;
-  top: 130px;
-  left: 20%;
-  right: 20%;
-  bottom: 140px;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
   overflow: auto;
   outline: none;
 
   .session-form-container {
-    width: inherit;
-    height: inherit;
     margin: 0;
     border: 1px solid $hr;
+    width: 500px;
   }
 
   .close-btn {

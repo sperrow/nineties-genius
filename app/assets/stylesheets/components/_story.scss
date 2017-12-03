@@ -15,6 +15,7 @@
     &:hover {
       .story-img {
         filter: brightness(1);
+        transition: filter 0.5s;
       }
     }
   }
@@ -22,6 +23,7 @@
   .story-img {
     width: 100%;
     filter: brightness(0.5);
+    transition: filter 0.5s;
   }
 
   .story-title {

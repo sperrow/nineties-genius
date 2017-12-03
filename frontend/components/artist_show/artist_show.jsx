@@ -49,8 +49,12 @@ class ArtistShow extends React.Component {
                   {
                     artist.albums.map(album => (
                       <div key={album.id} className="album">
-                        <img src={album.img_url} className="artist-art" />
-                        <p className="album-link"><Link to={`/albums/${album.id}`}>{album.title}</Link></p>
+                        <Link to={`/albums/${album.id}`}>
+                          <img src={album.img_url} className="artist-art" />
+                        </Link>
+                        <p className="album-link">
+                          <Link to={`/albums/${album.id}`}>{album.title}</Link>
+                        </p>
                       </div>
                     ))
                   }
