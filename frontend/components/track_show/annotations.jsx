@@ -25,7 +25,10 @@ class Annotations extends React.Component {
 
     return (
       <div className="annotation-container" style={{top: top}}>
-        <div className="annotation-arrow"></div>
+        <div className="arrow-container">
+          <div className="outer-arrow"></div>
+          <div className="inner-arrow"></div>
+          </div>
         {
           annotations.map(annotation => (
             <div key={annotation.id} className="row">

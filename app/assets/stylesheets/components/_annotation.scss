@@ -15,28 +15,29 @@
     width: 4px;
   }
 
-  .annotation-arrow {
-    width: 40px;
+  .arrow-container {
+    position: absolute;
+    left: -37px;
+    top: 70px;
+  }
+
+  .outer-arrow {
+    width: 41px;
     height: 40px;
     background-color: $annotation;
     clip-path: polygon(100% 0, 50% 50%, 100% 100%);
     -webkit-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
-    position: absolute;
-    left: -36px;
-    top: 70px;
+  }
 
-    &:after {
-      content: '';
-      display: block;
-      width: 30px;
-      height: 30px;
-      background-color: white;
-      clip-path: polygon(100% 0, 50% 50%, 100% 100%);
-      -webkit-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
-      position: absolute;
-      left: 10px;
-      top: 5px;
-    }
+  .inner-arrow {
+    width: 32px;
+    height: 30px;
+    background-color: white;
+    clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    -webkit-clip-path: polygon(100% 0, 50% 50%, 100% 100%);
+    position: absolute;
+    left: 10px;
+    top: 5px;
   }
 
   .annotation-heading {
