@@ -8,11 +8,12 @@ Check it out! [https://nineties-genius.herokuapp.com](https://nineties-genius.he
 
 #### Run locally
 1. make sure Rails and Postgres are installed and that Postgres is running
-2. run these commands
+2. run these commands:
 ```
 bundle install
 npm install
 bundle exec rails db:setup
+rails server
 ```
 3. navigate to http://localhost:3000
 
