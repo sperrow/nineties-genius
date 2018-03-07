@@ -85,7 +85,7 @@ end
 This app would definitely benefit from a search feature, it would make finding individual songs and artists much easier.
 
 ### Image Uploads
-Right now users have to upload hosted image urls which is inconvenient and bad practice from a content management perspective. Users should be able to upload images and have them hosted on the site so there is no reliance on external sites.
+Right now users have to use external image urls which is inconvenient and bad practice from a content management perspective. Users should be able to upload images and have them hosted on the site so there is no reliance on external sites.
 
 ### User Profiles
 Users can already create their own accounts but it'd be great to have the option to customize their bios and profile pictures.
